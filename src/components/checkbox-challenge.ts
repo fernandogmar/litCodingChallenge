@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit'
+import { LitElement, css, html } from 'lit'
 import { customElement} from 'lit/decorators.js'
 import './checkbox-group';
 import { states } from '../utils/data';
@@ -19,8 +19,24 @@ export class CheckboxChallenge extends LitElement {
 
     render() {
         return html`
-            <checkbox-group .options=${ CheckboxChallenge.stateOptions }></checkbox-group>
-            <checkbox-group .options=${ CheckboxChallenge.circuitOptions }></checkbox-group>
+            <checkbox-group class="jurisdictions" .options=${ CheckboxChallenge.stateOptions }></checkbox-group>
+            <checkbox-group class="circuits" .options=${ CheckboxChallenge.circuitOptions }></checkbox-group>
         `;
     }
+
+    static styles = css`
+        :host {
+            display: flex;
+            flex-direction: row;
+        }
+
+        .circuits {
+            min-width: fit-content;
+        }
+
+        .jurisdictions {
+            flex: 1 0;
+            min-width: fit-content;
+        }
+    `;
 }

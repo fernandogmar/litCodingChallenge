@@ -34,6 +34,23 @@ export class CheckboxGroup extends LitElement {
     }
 
     static styles = css`
+      ul {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+        padding: 0;
+        margin: 0;
+        height: 100%;
+      }
+      
+      li {
+        flex: none;
+        width: fit-content;
+        list-style-type: none;
+        padding: 4px;
+      }
+
       li * {
         cursor: pointer;
       }
