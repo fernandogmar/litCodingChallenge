@@ -5,33 +5,26 @@ import {repeat} from 'lit/directives/repeat.js';
 @customElement('checkbox-group')
 export class CheckboxGroup extends LitElement {
     @property()
-    options =  [
-        { "name": "Alabama", "circuit": "11th" },
-        { "name": "Alaska", "circuit": "9th" },
-        { "name": "Arizona", "circuit": "9th" },
-        { "name": "Arkansas", "circuit": "8th" },
-        { "name": "California", "circuit": "9th" }
-    ]
+    options : string[] =  []
 
     @state()
     selectedOptions : string[] = []
 
     render () {
         return html`
-              <ul>
+              <ul @change=${this._handleCheckboxChange}>
                 ${repeat(
                     this.options,
-                    (option) => option.name,
+                    (option) => option,
                     (option) => html`
                       <li>
                         <label>     
                           <input
                             type="checkbox"
-                            value=${option.name}
-                            ?checked=${this.selectedOptions.includes(option.name)}
-                            @change=${this._handleCheckboxChange}
+                            value=${option}
+                            ?checked=${this.selectedOptions.includes(option)}
                           />
-                          ${option.name}
+                          ${option}
                         </label>
                       </li>
                     `
