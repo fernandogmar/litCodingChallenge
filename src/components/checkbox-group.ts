@@ -5,7 +5,10 @@ import {repeat} from 'lit/directives/repeat.js';
 @customElement('checkbox-group')
 export class CheckboxGroup extends LitElement {
     @property()
-    options : string[] =  []
+    name : string = ''
+
+    @property()
+    options : string[] = []
 
     @state()
     selectedOptions : string[] = []
@@ -55,7 +58,7 @@ export class CheckboxGroup extends LitElement {
         cursor: pointer;
       }
     `;
-
+    
     private _handleCheckboxChange(e: Event) {
       const checkbox = e.target as HTMLInputElement;
       if (checkbox.checked) {
@@ -64,6 +67,19 @@ export class CheckboxGroup extends LitElement {
         this.selectedOptions = this.selectedOptions.filter(
           item => item !== checkbox.value
         );
+      }
+      this._handleSelectedOptionsChange();
+    }
+
+    private _handleSelectedOptionsChange() {
+      if(this.name) {
+        const event = new CustomEvent(`${this.name}-selected`, {
+          bubbles: true,
+          composed: true, 
+          detail: { selectedOptions: this.selectedOptions }
+        });
+    
+        this.dispatchEvent(event);
       }
     }
 }

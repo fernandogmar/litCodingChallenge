@@ -19,8 +19,8 @@ export class CheckboxChallenge extends LitElement {
 
     render() {
         return html`
-            <checkbox-group class="jurisdictions" .options=${ CheckboxChallenge.stateOptions }></checkbox-group>
-            <checkbox-group class="circuits" .options=${ CheckboxChallenge.circuitOptions }></checkbox-group>
+                <checkbox-group class="jurisdictions" name="jurisdictions" .options=${ CheckboxChallenge.stateOptions } @jurisdictions-selected=${ this._handleJurisdictionsSelected }></checkbox-group>
+                <checkbox-group class="circuits" name="circuits" .options=${ CheckboxChallenge.circuitOptions }></checkbox-group>
         `;
     }
 
@@ -39,4 +39,8 @@ export class CheckboxChallenge extends LitElement {
             min-width: fit-content;
         }
     `;
+
+    private _handleJurisdictionsSelected(e: CustomEvent) {
+        console.log(e.detail);
+    }
 }
