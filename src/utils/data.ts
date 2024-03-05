@@ -56,6 +56,35 @@ const states : StatesDescription[] = [
     { "name": "Wyoming", "circuit": "10th" }
 ];
 
+function circuitsSelector(states: StatesDescription[]) : string[] {
+    return states
+        .map((states) => [parseInt(states.circuit, 10) - 1, states.circuit])
+        .reduce((sorted_circuits, [pos, circuit]) => {
+            sorted_circuits[pos as number] = circuit;
+            return sorted_circuits;
+        }, []);
+}
+
+function circuitsByJurisdictionsSelector(states: StatesDescription[], jurisdictions: string[]) : string[] {
+    return states
+        .filter(state => jurisdictions.includes(state.name))
+        .map(state => state.circuit);
+}
+
+function jurisdictionsSelector(states: StatesDescription[]) : string[] {
+    return states.map((state) => state.name);
+}
+
+function jurisdictionsByCircuits(states: StatesDescription[], circuits: string[]) : string[] {
+    return jurisdictionsSelector(
+        states.filter(state => circuits.includes(state.circuit))
+    );
+}
+
 export {
-    states
+    states,
+    circuitsSelector,
+    circuitsByJurisdictionsSelector,
+    jurisdictionsSelector,
+    jurisdictionsByCircuits
 };
