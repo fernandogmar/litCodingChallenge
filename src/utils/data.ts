@@ -58,11 +58,11 @@ const states : StatesDescription[] = [
 
 function circuitsSelector(states: StatesDescription[]) : string[] {
     return states
-        .map((states) => [parseInt(states.circuit, 10) - 1, states.circuit])
+        .map((states) : [number, string] => [parseInt(states.circuit, 10) - 1, states.circuit])
         .reduce((sorted_circuits, [pos, circuit]) => {
-            sorted_circuits[pos as number] = circuit;
+            sorted_circuits[pos] = circuit;
             return sorted_circuits;
-        }, []);
+        }, [] as string[]);
 }
 
 function circuitsByJurisdictionsSelector(states: StatesDescription[], jurisdictions: string[]) : string[] {

@@ -13,12 +13,12 @@ export class CheckboxChallenge extends LitElement {
         return jurisdictionsSelector(states);
     }
     @property({ type: Array, attribute: 'jurisdictions', reflect: true })
-    selectedJurisdictions = []
+    selectedJurisdictions : string[] = []
 
-    @state({ type: Array })
-    selectedCircuits = []
+    @state()
+    selectedCircuits : string[] = []
 
-    attributeChangedCallback(name, oldVal, newVal) {
+    attributeChangedCallback(name: string, oldVal: string, newVal: string) {
         if (name === 'jurisdictions' && newVal !== oldVal) {
             this.selectedJurisdictions = JSON.parse(newVal);
         }
