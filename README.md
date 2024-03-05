@@ -18,3 +18,10 @@ cd litCodingChallenge
 npm install
 npm run dev
 ```
+
+### Further improvements
+
+- Improve design 
+- Add extensions as searching/filtering  
+- Idea: showing at the top all the selected jurisdictions as tags, that could also be removed one by one
+- Idea: add clear/reset button
