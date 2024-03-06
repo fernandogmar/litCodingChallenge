@@ -48,7 +48,7 @@
                           <input
                             type="checkbox"
                             value=${s}
-                            ?checked=${this.selectedOptions.includes(s)}
+                            .checked=${this.selectedOptions.includes(s)}
                           />
                           ${s}
                         </label>
