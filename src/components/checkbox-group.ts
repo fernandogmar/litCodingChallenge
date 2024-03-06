@@ -25,7 +25,7 @@ export class CheckboxGroup extends LitElement {
                           <input
                             type="checkbox"
                             value=${option}
-                            ?checked=${this.selectedOptions.includes(option)}
+                            .checked=${this.selectedOptions.includes(option)}
                           />
                           ${option}
                         </label>
